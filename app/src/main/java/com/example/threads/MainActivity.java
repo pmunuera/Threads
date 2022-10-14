@@ -59,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("MYAPP",res);
                         TextView tv = (TextView) findViewById(R.id.textView);
                         tv.append(res);
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                //UI Thread work here
+                                listilla.add(res);
+                                adapter.notifyDataSetChanged();
+                            }
+                    });
                     }
                 });
             }
